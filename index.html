@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Mr. Chatbot</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<script src="app.js"></script>
+    <style>
+
+.box1 {
+  width: 330px;
+  margin: 50px auto;
+  border: 4px solid darkblue;
+  padding: 20px;
+  text-align: center;
+  font-weight: 900;
+  color: darkblue;
+  font-family: arial;
+  position: relative;
+}
+.box {
+  width: 330px;
+  margin: 50px auto;
+  border: 4px solid darkgreen;
+  padding: 20px;
+  text-align: center;
+  font-weight: 900;
+  color: darkblue;
+  font-family: arial;
+  position: relative;
+}
+
+
+/* speech bubble 5 */
+
+.sb5:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid darkblue;
+  border-right: 10px solid transparent;
+  border-top: 10px solid darkblue;
+  border-bottom: 10px solid transparent;
+  right: -21px;
+  top: 6px;
+}
+
+.sb5:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 7px solid #fff;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #fff;
+  border-bottom: 7px solid transparent;
+  right: -11px;
+  top: 10px;
+}
+
+
+/* speech bubble 6 */
+
+.sb6:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid darkgreen;
+  border-top: 10px solid darkgreen;
+  border-bottom: 10px solid transparent;
+  left: -21px;
+  top: 6px;
+}
+
+.sb6:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 7px solid transparent;
+  border-right: 7px solid #fff;
+  border-top: 7px solid #fff;
+  border-bottom: 7px solid transparent;
+  left: -11px;
+  top: 10px;
+}
+
+
+/* speech bubble 7 */
+
+.sb7:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid #00bfb6;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #00bfb6;
+  border-bottom: 10px solid transparent;
+  left: 20px;
+  bottom: -23px;
+}
+
+.sb7:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid #fff;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #fff;
+  border-bottom: 10px solid transparent;
+  left: 24px;
+  bottom: -13px;
+}
+
+
+/* speech bubble 8 */
+
+.sb8:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid #00bfb6;
+  border-top: 10px solid #00bfb6;
+  border-bottom: 10px solid transparent;
+  right: 20px;
+  bottom: -23px;
+}
+
+.sb8:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid #fff;
+  border-top: 10px solid #fff;
+  border-bottom: 10px solid transparent;
+  right: 24px;
+  bottom: -13px;
+}
+
+
+    </style>
+  </head>
+<body>
+	<div ng-app = "myApp" class = "container" style="width:550px">
+	  <div style="text-align:center;color:blue">
+		<h3><b>Mr. Chatbot</b></h3>
+	  </div>
+		<div ng-controller = "ContactController">
+		  <!--<div align="right">
+			<a href="#" ng-click="searchUser()">{{title}}</a>
+		  </div> --->
+		  
+			
+		  <div style="background-color:aliceblue;height:430px;width:520px;border:1px solid #ccc;font:16px/26px arial;overflow:auto;text-align:center">
+			
+				<div  ng-repeat = "contact in contacts">
+                    <p class="box1 sb5" ng-if="contact.id != 0">{{ contact.name }}</p>
+                    <p class="box sb6" ng-if="contact.id != 0" style="color:darkgreen">{{ contact.response }}</p>
+	
+					 
+				</div>
+				
+		  <div ng-hide="contacts.length > 1">No Messages</div>
+		  </div>
+            <form role = "form" class="well" ng-hide="ifSearchUser">
+			<div class = "form-group">
+				<label for = "name"> </label>
+				<input type = "text" id = "name" class = "form-control" placeholder = "Type a message..." ng-model = "newcontact.name">
+			</div>
+			<br>
+			<input type="hidden" ng-model="newcontact.id">
+			<input type="button" class="btn btn-primary" ng-click="saveContact()" class="btn btn-primary" value = "Send">
+		  </form>
+            
+            
+		</div>
+	</div>
+</body>
+</html>
